@@ -1,5 +1,5 @@
 import { Route } from "@vaadin/router";
-import "./views/empty/notifications-view";
+import "./views/notifications/notifications-view";
 
 export type ViewRoute = Route & { title?: string; children?: ViewRoute[] };
 

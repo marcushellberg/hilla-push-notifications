@@ -1,30 +1,30 @@
-# Custom project from start.vaadin.com
+# Example of sending Web Push notifications from Java
 
-This project was created from https://start.vaadin.com. It's a fully working Vaadin application that you continue developing locally.
-It has all the necessary dependencies and files to help you get going.
+This is a full-stack example showing:
 
-The project is a standard Maven project, so you can import it to your IDE of choice. You'll need to have Java 8+ and Node.js 10+ installed.
+- How to subscribe (and unsubscribe) to notifications in the browser
+- How to send push notifications from a Java (Spring Boot) server
 
-To run from the command line, use `mvn` and open [http://localhost:8080](http://localhost:8080) in your browser.
 
-## Project structure
+## Tech stack
 
-| Directory                                  | Description                                                                                                                 |
-| :----------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------- |
-| `frontend/`                                | Client-side source directory                                                                                                |
-| &nbsp;&nbsp;&nbsp;&nbsp;`index.html`       | HTML template                                                                                                               |
-| &nbsp;&nbsp;&nbsp;&nbsp;`index.ts`         | Frontend entrypoint, contains the client-side routing setup using [Vaadin Router](https://vaadin.com/router)                |
-| &nbsp;&nbsp;&nbsp;&nbsp;`main-layout.ts`   | Main layout Web Component, contains the navigation menu, uses [App Layout](https://vaadin.com/components/vaadin-app-layout) |
-| &nbsp;&nbsp;&nbsp;&nbsp;`views/`           | UI views Web Components (TypeScript)                                                                                        |
-| &nbsp;&nbsp;&nbsp;&nbsp;`styles/`          | Styles directory (CSS)                                                                                                      |
-| `src/main/java/<groupId>/`                 | Server-side source directory, contains the server-side Java views                                                           |
-| &nbsp;&nbsp;&nbsp;&nbsp;`Application.java` | Server entrypoint                                                                                                           |
+The project uses [Vaadin Fusion](https://vaadin.com/fusion). It has a Spring Boot backend (Java) and a LitElement frontend (TypeScript). It uses the [Java WebPush](https://github.com/web-push-libs/webpush-java) library for sending messages.
 
-## What next?
+## Pre-requisites
 
-[vaadin.com](https://vaadin.com) has lots of material to help you get you started:
+- Java 16+
+- Maven 3.6+
+- Node 14+
 
-- Read the [Quick Start Guide](https://vaadin.com/docs/v16/flow/typescript/quick-start-guide.html) to learn the first steps of full stack Vaadin applications development.
-- Follow the tutorials in [vaadin.com/learn/tutorials](https://vaadin.com/learn/tutorials). Especially [Building Modern Web Apps with Spring Boot and Vaadin](https://vaadin.com/learn/tutorials/modern-web-apps-with-spring-boot-and-vaadin) is good for getting a grasp of the basic Vaadin concepts.
-- Read the documentation in [vaadin.com/docs](https://vaadin.com/docs).
-- For a bigger Vaadin application example, check out the Full Stack App starter from [vaadin.com/start](https://vaadin.com/start).
+## Running the app
+
+1. First, generate required a private and public key pair for your server with `npx web-push generate-vapid-keys`. 
+2. Rename `.env.template` to `.env` and add your keys to it.
+3. Load the environment file with `source .env`
+3. Start the Spring Boot application with `mvn` or by running `Application.java`.
+
+## Navigating the code
+
+- `frontend/views/notifications/notifications-view.ts` contains the client implementation for subscribing and unsubscribing
+- `src/main/java/com/example/application/MessageService.java` contains the code for sending push messages
+- `src/main/java/com/example/application/MessageEndpoint.java` contains the code for accessing the server
