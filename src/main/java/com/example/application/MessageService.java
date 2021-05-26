@@ -28,8 +28,6 @@ public class MessageService {
   private String publicKey;
   @Value("${vapid.private.key}")
   private String privateKey;
-  @Value("${vapid.subject}")
-  private String subject;
 
   private PushService pushService;
   private List<Subscription> subscriptions = new ArrayList<>();

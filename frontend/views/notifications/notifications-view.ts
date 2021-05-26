@@ -32,7 +32,7 @@ export class NotificationsView extends View {
             >
           `
         : html`
-            <p>You are not yet subscribed to receive notifications 👎</p>
+            <p>You are not yet subscribed to receive notifications.</p>
 
             <vaadin-button
               theme="primary"
