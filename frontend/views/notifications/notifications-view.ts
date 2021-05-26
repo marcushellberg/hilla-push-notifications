@@ -62,6 +62,7 @@ export class NotificationsView extends View {
 
       if (subscription) {
         this.subscribed = true;
+        console.log(JSON.stringify(subscription));
         server.subscribe(JSON.parse(JSON.stringify(subscription)));
       }
     } else {

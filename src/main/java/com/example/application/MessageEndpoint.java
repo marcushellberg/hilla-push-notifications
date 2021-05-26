@@ -20,7 +20,7 @@ public class MessageEndpoint {
   }
 
   public void subscribe(Subscription subscription) {
-    messageService.addSubscription(subscription);
+    messageService.subscribe(subscription);
   }
 
   public void unsubscribe(String endpoint) {

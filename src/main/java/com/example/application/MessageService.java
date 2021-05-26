@@ -42,7 +42,7 @@ public class MessageService {
     return publicKey;
   }
 
-  public void addSubscription(Subscription subscription) {
+  public void subscribe(Subscription subscription) {
     System.out.println("Subscribed to " + subscription.endpoint);
     this.subscriptions.add(subscription);
   }
