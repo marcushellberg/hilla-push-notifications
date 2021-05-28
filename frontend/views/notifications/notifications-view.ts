@@ -9,8 +9,6 @@ export class NotificationsView extends View {
   denied = Notification.permission === "denied";
   @state()
   subscribed = false;
-  @state()
-  publicKey = "";
 
   render() {
     return html`
@@ -34,10 +32,7 @@ export class NotificationsView extends View {
         : html`
             <p>You are not yet subscribed to receive notifications.</p>
 
-            <vaadin-button
-              theme="primary"
-              @click=${this.subscribe}
-              .disabled=${!this.publicKey}
+            <vaadin-button theme="primary" @click=${this.subscribe}
               >Subscribe</vaadin-button
             >
           `}
@@ -47,22 +42,22 @@ export class NotificationsView extends View {
   async firstUpdated() {
     const registration = await navigator.serviceWorker.getRegistration();
     this.subscribed = !!(await registration?.pushManager.getSubscription());
-    this.publicKey = await server.getPublicKey();
   }
 
   async subscribe() {
     const notificationPermission = await Notification.requestPermission();
 
     if (notificationPermission === "granted") {
+      const publicKey = await server.getPublicKey();
       const registration = await navigator.serviceWorker.getRegistration();
       const subscription = await registration?.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: this.urlB64ToUint8Array(this.publicKey),
+        applicationServerKey: this.urlB64ToUint8Array(publicKey),
       });
 
       if (subscription) {
         this.subscribed = true;
-        console.log(JSON.stringify(subscription));
+        // Serialize keys uint8array -> base64
         server.subscribe(JSON.parse(JSON.stringify(subscription)));
       }
     } else {

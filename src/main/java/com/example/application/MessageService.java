@@ -48,7 +48,7 @@ public class MessageService {
   }
 
   public void unsubscribe(String endpoint) {
-    System.out.println("Unsubscribing from " + endpoint);
+    System.out.println("Unsubscribed from " + endpoint);
     subscriptions = subscriptions.stream().filter(s -> !endpoint.equals(s.endpoint)).collect(Collectors.toList());
   }
 

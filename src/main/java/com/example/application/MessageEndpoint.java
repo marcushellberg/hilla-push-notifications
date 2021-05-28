@@ -26,5 +26,4 @@ public class MessageEndpoint {
   public void unsubscribe(String endpoint) {
     messageService.unsubscribe(endpoint);
   }
-
 }

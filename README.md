@@ -5,6 +5,8 @@ This is a full-stack example showing:
 - How to subscribe (and unsubscribe) to notifications in the browser
 - How to send push notifications from a Java (Spring Boot) server
 
+Text tutorial: https://dev.to/marcushellberg/how-to-send-web-push-notifications-in-java-21lo
+Video tutorial: https://youtu.be/M5sbGvW3S4I
 
 ## Tech stack
 
