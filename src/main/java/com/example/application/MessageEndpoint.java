@@ -1,8 +1,8 @@
 package com.example.application;
 
-import com.vaadin.flow.server.connect.Endpoint;
-import com.vaadin.flow.server.connect.auth.AnonymousAllowed;
-
+import com.vaadin.flow.server.auth.AnonymousAllowed;
+import dev.hilla.Endpoint;
+import dev.hilla.Nonnull;
 import nl.martijndwars.webpush.Subscription;
 
 @Endpoint
@@ -15,7 +15,7 @@ public class MessageEndpoint {
     this.messageService = messageService;
   }
 
-  public String getPublicKey() {
+  public @Nonnull String getPublicKey() {
     return messageService.getPublicKey();
   }
 

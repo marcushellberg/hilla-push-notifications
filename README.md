@@ -10,20 +10,20 @@ Video tutorial: https://youtu.be/M5sbGvW3S4I
 
 ## Tech stack
 
-The project uses [Vaadin Fusion](https://vaadin.com/fusion). It has a Spring Boot backend (Java) and a LitElement frontend (TypeScript). It uses the [Java WebPush](https://github.com/web-push-libs/webpush-java) library for sending messages.
+The project uses [Hilla](https://hilla.dev). It has a Spring Boot backend (Java) and a [Lit](https://lit.dev) frontend (TypeScript). It uses the [Java WebPush](https://github.com/web-push-libs/webpush-java) library for sending messages.
 
 ## Pre-requisites
 
-- Java 16+
+- Java 17+
 - Maven 3.6+
-- Node 14+
+- Node 16.14+
 
 ## Running the app
 
-1. First, generate required a private and public key pair for your server with `npx web-push generate-vapid-keys`. 
+1. First, generate required a private and public key pair for your server with `npx web-push generate-vapid-keys`.
 2. Rename `.env.template` to `.env` and add your keys to it.
 3. Load the environment file with `source .env`
-3. Start the Spring Boot application with `mvn` or by running `Application.java`.
+4. Start the Spring Boot application with `mvn` or by running `Application.java`.
 
 ## Navigating the code
 

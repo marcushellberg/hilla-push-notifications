@@ -1,9 +1,0 @@
-notifications-view {
-  display: block;
-  margin: var(--lumo-space-m);
-  font-size: 1.5em;
-}
-
-notifications-view h1 {
-  font-size: 1.5em;
-}

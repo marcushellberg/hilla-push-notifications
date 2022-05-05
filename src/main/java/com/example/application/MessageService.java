@@ -8,15 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
-
 import javax.annotation.PostConstruct;
-
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.jose4j.lang.JoseException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-
 import nl.martijndwars.webpush.Notification;
 import nl.martijndwars.webpush.PushService;
 import nl.martijndwars.webpush.Subscription;
@@ -49,13 +46,15 @@ public class MessageService {
 
   public void unsubscribe(String endpoint) {
     System.out.println("Unsubscribed from " + endpoint);
-    subscriptions = subscriptions.stream().filter(s -> !endpoint.equals(s.endpoint)).collect(Collectors.toList());
+    subscriptions = subscriptions.stream().filter(s -> !endpoint.equals(s.endpoint))
+        .collect(Collectors.toList());
   }
 
   public void sendNotification(Subscription subscription, String messageJson) {
     try {
       pushService.send(new Notification(subscription, messageJson));
-    } catch (GeneralSecurityException | IOException | JoseException | ExecutionException | InterruptedException e) {
+    } catch (GeneralSecurityException | IOException | JoseException | ExecutionException
+        | InterruptedException e) {
       e.printStackTrace();
     }
   }
